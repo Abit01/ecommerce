@@ -61,10 +61,12 @@ $app->get('/admin/users', function(){
 	User::verifyLogin();
 
 	$users = User::listAll();
-
+	
 	$page = new PageAdmin();
 
-	$page->setTpl("users", array("users"=>$users));
+	$page->setTpl("users", array(
+		"users"=>$users
+	));
 
 });
 
@@ -127,7 +129,7 @@ $app->post("/admin/users/create", function () {
  	$user->setData($_POST);
 
 	$user->save();
-
+	
 	header("Location: /admin/users");
  	exit;
 

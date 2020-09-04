@@ -8,6 +8,7 @@ class User extends Model{
 
 	const SESSION = "User";
 
+
 	public static function login($login, $password)
 	{
 		$sql = new Sql();
@@ -57,7 +58,7 @@ class User extends Model{
 
 		$sql = new Sql();
 
-		return $sql->select("SELECT * FROM tb_users INNER JOIN tb_persons b USING(idperson) ORDER BY b.desperson");
+		return $sql->select("SELECT * FROM tb_users a INNER JOIN tb_persons b USING(idperson) ORDER BY b.desperson");
 
 	}
 
@@ -66,7 +67,7 @@ class User extends Model{
 
 		$sql = new Sql();
 
-		$results = $sql->select("CALL sp_users_save(:desperson, :deslogin, :despassword, :desemail, :nrphone, :inadmin", array(
+		$results = $sql->select("CALL sp_users_save(:desperson, :deslogin, :despassword, :desemail, :nrphone, :inadmin)", array(
 			":desperson"=>$this->getdesperson(),
 			":deslogin"=>$this->getdeslogin(),
 			":despassword"=>$this->getdespassword(),
@@ -75,8 +76,9 @@ class User extends Model{
 			":inadmin"=>$this->getinadmin()
 
 		));
-
+		
 		$this->setData($results[0]);
+
 
 	}
 }

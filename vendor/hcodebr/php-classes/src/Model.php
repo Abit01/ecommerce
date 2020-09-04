@@ -14,15 +14,19 @@ class Model{
 
 		switch ($method) {
 			case "get":
+				
 				return $this->values[$fieldName];
+				
 				break;
 
 			case "set":	
+				
 				$this->values[$fieldName] = $args[0];
+				
 				break;
 			
 			default:
-				# code...
+				
 				break;
 		}
 	}
@@ -30,6 +34,7 @@ class Model{
 
 	public function setData($data = array())
 	{
+
 		foreach ($data as $key => $value) {
 			$this->{"set".$key}($value);
 		}
