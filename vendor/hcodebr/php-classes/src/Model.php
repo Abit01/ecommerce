@@ -13,10 +13,9 @@ class Model{
 		$fieldName = substr($name, 3, strlen($name));
 
 		switch ($method) {
-			case "get":
-				
-				return $this->values[$fieldName];
-				
+			
+			case "get":	
+				return (isset($this->values[$fieldName])) ? $this->values[$fieldName] : NULL;
 				break;
 
 			case "set":	
